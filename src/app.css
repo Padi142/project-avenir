@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    @apply text-gray-50
+}
+body {
+    @apply bg-gray-900
+}
