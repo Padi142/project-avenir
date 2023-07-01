@@ -23,7 +23,7 @@
 	<p class="text-1xl my-2"> {$page.params.codeID}</p>
 	<p class ="my-5"></p>
 
-	<div class="form-control w-full max-w-lg">
+	<div class="form-control w-full max-w-lg mh-6">
 		<!-- svelte-ignore a11y-label-has-associated-control -->
 		<label class="label">
 		  <span class="label-text">Wanna log in?</span>
@@ -36,7 +36,7 @@
 	<div transition:fade class="flex flex-col gap-4 justify-center items-center ">
 		<p class="text-xl my-3"> It seems that you are not registered...</p>
 		<p class="text-base my-2">We've created an account for your convinience:</p>
-		<p class="text-sm ">3f3b08eca62c21d76256e6e1d0b8bf99f4efbe376f64335b72f4163a8fc50dba</p>
+		<p class="text-sm my-4 ">3f3b08eca62c21d76256e6e1d0b8bf99f4efbe376f64335b72f4163a8fc50dba</p>
 	</div>
 		
 	{/if}
