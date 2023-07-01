@@ -1,13 +1,13 @@
 {
-  "version": "5",
-  "dialect": "pg",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "5",
-      "when": 1687120752088,
-      "tag": "0000_tranquil_ghost_rider",
-      "breakpoints": true
-    }
-  ]
+	"version": "5",
+	"dialect": "pg",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "5",
+			"when": 1687120752088,
+			"tag": "0000_tranquil_ghost_rider",
+			"breakpoints": true
+		}
+	]
 }
