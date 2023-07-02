@@ -6,8 +6,9 @@ import type { Actions, PageServerLoad } from './$types';
 import { codes, type Code } from '$lib/db/schema/codes';
 import { goto } from '$app/navigation';
 import UserIDStore from '../../../stores/user_store';
-import { MD5 } from 'crypto-js';
+
 import { redirect } from '@sveltejs/kit';
+import { createHash } from 'crypto';
 
 export const load = (async ({ params }) => {
 	return {
@@ -35,7 +36,7 @@ export const actions = {
 			throw redirect(302, '/dashboard');
 		}
 
-		const hash = MD5(Date()).toString();
+		const hash =  createHash('sha256').update(Date().toString()).digest('hex').toString();
 
 	    await drizzle_db.insert(users).values({ name: loginValue, hash: hash });
 
