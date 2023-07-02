@@ -9,6 +9,7 @@ import UserIDStore from '../../../stores/user_store';
 
 import { redirect } from '@sveltejs/kit';
 import { createHash } from 'crypto';
+import { showSnackbar } from '../../../stores/snackbar_store';
 
 export const load = (async ({ params }) => {
 	return {
@@ -27,7 +28,8 @@ export const actions = {
 		const data = await request.formData();
 		const loginValue = data.get('loginValue')?.toString();
 
-		if (loginValue == null) {
+	if (loginValue == null || loginValue == "") {
+			showSnackbar('Username not valid', 5000);
 			return;
 		}
 
