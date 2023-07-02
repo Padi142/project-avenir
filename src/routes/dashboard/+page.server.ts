@@ -4,14 +4,11 @@ import UserIDStore from '../../stores/user_store';
 import type { Actions, PageServerLoad } from './$types';
 import { drizzle_db } from '$lib/db/connection.server';
 import { eq } from 'drizzle-orm';
-import { goto } from '$app/navigation';
 import { redirect } from '@sveltejs/kit';
-import { page } from '$app/stores';
 
 
 export const load = (async ({ url }) => {
 	const userHash = get(UserIDStore);
-	console.log(userHash);
 	if(userHash == ""){
 		throw redirect(302, '/');
 	}
