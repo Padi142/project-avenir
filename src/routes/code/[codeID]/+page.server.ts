@@ -36,12 +36,11 @@ export const actions = {
 			throw redirect(302, '/dashboard');
 		}
 
-		const hash =  createHash('sha256').update(Date().toString()).digest('hex').toString();
+		const hash = createHash('sha256').update(Date().toString()).digest('hex').toString();
 
-	    await drizzle_db.insert(users).values({ name: loginValue, hash: hash });
+		await drizzle_db.insert(users).values({ name: loginValue, hash: hash });
 
 		UserIDStore.set(hash);
 		throw redirect(302, '/dashboard?firstLogin=true');
-
 	}
 };
