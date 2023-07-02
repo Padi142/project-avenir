@@ -8,6 +8,13 @@
 			"when": 1687120752088,
 			"tag": "0000_tranquil_ghost_rider",
 			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "5",
+			"when": 1688306371535,
+			"tag": "0001_hesitant_lady_vermin",
+			"breakpoints": true
 		}
 	]
 }
