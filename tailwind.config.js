@@ -7,14 +7,12 @@ export default {
 			sans: ['"Archivo Narrow"', 'sans-serif']
 		},
 		screens: {
-			'mobile': '300px',
+			mobile: '300px',
 			// => @media (min-width: 300px) { ... }
-	  
-	
-	  
-			'desktop': '600px',
+
+			desktop: '600px'
 			// => @media (min-width: 1280px) { ... }
-		  },
+		}
 	},
 	plugins: [require('daisyui')],
 	daisyui: {

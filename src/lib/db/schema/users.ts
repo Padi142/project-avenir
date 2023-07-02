@@ -1,9 +1,10 @@
 import { timestamp, varchar, integer, pgTable, serial } from 'drizzle-orm/pg-core';
-import { sql } from 'drizzle-orm';
+import { sql, type InferModel } from 'drizzle-orm';
 
-export const User = pgTable('users', {
+export const users = pgTable('users', {
 	id: serial('id').primaryKey(),
 	name: varchar('name').notNull(),
+	hash: varchar('hash').notNull(),
 	level: integer('level').notNull().default(0),
 	score: integer('score').notNull().default(0),
 	createdAt: timestamp('created_at')
@@ -13,3 +14,4 @@ export const User = pgTable('users', {
 		.notNull()
 		.default(sql`now()`)
 });
+export type User = InferModel<typeof users>;
