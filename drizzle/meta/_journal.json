@@ -15,6 +15,13 @@
 			"when": 1688306371535,
 			"tag": "0001_hesitant_lady_vermin",
 			"breakpoints": true
+		},
+		{
+			"idx": 2,
+			"version": "5",
+			"when": 1688740766662,
+			"tag": "0002_previous_demogoblin",
+			"breakpoints": true
 		}
 	]
 }

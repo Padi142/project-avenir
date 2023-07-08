@@ -16,11 +16,11 @@ export const load = (async ({ url }) => {
 
 	return {
 		user: fetchUser(userHash),
-		isFirstLogin: login != null ? login : false
+		isFirstLogin: JSON.parse(login ?? 'false')
 	};
 }) satisfies PageServerLoad;
 
-const fetchUser = async (userHash: string): Promise<User | null> => {
+const fetchUser = async (userHash: string): Promise<User> => {
 	const usersResult = await drizzle_db
 		.select()
 		.from(users)

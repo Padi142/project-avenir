@@ -32,49 +32,65 @@ export const actions = {
 	login: async ({ params, request }) => {
 		const data = await request.formData();
 		const loginValue = data.get('loginValue')?.toString();
+		const code = await findCode(params.codeID);
 
-		const codesResult = await drizzle_db
-			.select()
-			.from(codes)
-			.where(eq(codes.hash, params.codeID))
-			.limit(1);
-		const code = codesResult[0];
-
-		if (loginValue == null || loginValue == '') {
+		if (!loginValue || loginValue.trim() === '') {
 			showSnackbar('Username not valid', 5000);
 			return;
 		}
 
-		if (loginValue.length == 64) {
-			const usersResult = await drizzle_db
-				.select()
-				.from(users)
-				.where(eq(users.hash, loginValue))
-				.limit(1);
+		if (loginValue.length === 64) {
+			const user = await findUserByHash(loginValue);
 
-			//User does not exist
-			if (usersResult.length == 0) {
+			// User does not exist
+			if (!user) {
 				throw redirect(302, '/');
 			}
 
 			UserIDStore.set(loginValue);
-
-			const user = usersResult[0];
-
-			await drizzle_db.insert(scans).values({ codeId: code.id, userId: user.id });
-
+			const scan = findScan(user.id, code.id);
+			if (scan == null) {
+				await drizzle_db.insert(scans).values({ codeId: code.id, userId: user.id });
+				await drizzle_db
+					.update(users)
+					.set({ level: user.level + 1, score: user.score + code.points })
+					.where(eq(users.id, user.id));
+			}
 			throw redirect(302, '/dashboard');
 		}
 
-		const hash = createHash('sha256').update(Date().toString()).digest('hex').toString();
-
-		await drizzle_db.insert(users).values({ name: loginValue, hash: hash });
-
-		const user = await drizzle_db.select().from(users).where(eq(users.hash, loginValue)).limit(1);
-
-		await drizzle_db.insert(scans).values({ codeId: code.id, userId: user[0].id });
-
+		const hash = createHashValue();
+		await drizzle_db
+			.insert(users)
+			.values({ name: loginValue, hash: hash, level: 1, score: code.points });
+		const user = await findUserByHash(loginValue);
+		await drizzle_db.insert(scans).values({ codeId: code.id, userId: user.id });
 		UserIDStore.set(hash);
 		throw redirect(302, '/dashboard?firstLogin=true');
 	}
+};
+
+const findCode = async (codeID: string) => {
+	const codesResult = await drizzle_db.select().from(codes).where(eq(codes.hash, codeID)).limit(1);
+	return codesResult[0];
+};
+
+const findUserByHash = async (hash: string) => {
+	const usersResult = await drizzle_db.select().from(users).where(eq(users.hash, hash)).limit(1);
+	return usersResult[0];
+};
+
+const findScan = async (userID: number, codeID: number) => {
+	const scanResult = await drizzle_db
+		.select()
+		.from(scans)
+		.where(eq(scans.codeId, codeID))
+		.where(eq(scans.userId, userID))
+		.limit(1);
+	return scanResult[0];
+};
+
+const createHashValue = () => {
+	const hash = createHash('sha256').update(Date().toString()).digest('hex').toString();
+	return hash;
 };

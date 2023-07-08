@@ -23,12 +23,18 @@ importers:
       drizzle-orm:
         specifier: ^0.27.0
         version: 0.27.0(@vercel/postgres@0.4.0)(mysql2@3.4.3)(postgres@3.3.5)
+      html5-qrcode:
+        specifier: ^2.3.8
+        version: 2.3.8
       mysql2:
         specifier: ^3.4.3
         version: 3.4.3
       postgres:
         specifier: ^3.3.5
         version: 3.3.5
+      svelte-forms:
+        specifier: ^2.3.1
+        version: 2.3.1
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^2.1.0
@@ -2024,6 +2030,10 @@ packages:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
     dev: true
 
+  /html5-qrcode@2.3.8:
+    resolution: {integrity: sha512-jsr4vafJhwoLVEDW3n1KvPnCCXWaQfRng0/EEYk1vNcQGcG/htAdhJX0be8YyqMoSz7+hZvOZSTAepsabiuhiQ==}
+    dev: false
+
   /https-proxy-agent@5.0.1:
     resolution: {integrity: sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==}
     engines: {node: '>= 6'}
@@ -2117,6 +2127,10 @@ packages:
   /is-promise@2.2.2:
     resolution: {integrity: sha512-+lP4/6lKUBfQjZ2pdxThZvLUAafmZb8OAxFb8XXtiQmS35INgr85hdOGoEs124ez1FCnZJt6jau/T+alh58QFQ==}
     dev: true
+
+  /is-promise@4.0.0:
+    resolution: {integrity: sha512-hvpoI6korhJMnej285dSg6nu1+e6uxs7zG3BYAm5byqDsgJNWwxzM6z6iZiAgQR4TJ30JmBTOwqZUw3WlyH3AQ==}
+    dev: false
 
   /is-property@1.0.2:
     resolution: {integrity: sha512-Ks/IoX00TtClbGQr4TWXemAnktAQvYB7HzcCxDGqEZU6oCmb2INHuOoKxbtR+HFkmYWBKv/dOZtGRiAjDhj92g==}
@@ -3042,6 +3056,12 @@ packages:
       postcss-scss: 4.0.6(postcss@8.4.24)
       svelte: 4.0.1
     dev: true
+
+  /svelte-forms@2.3.1:
+    resolution: {integrity: sha512-ExX9PM0JgvdOWlHl2ztD7XzLNPOPt9U5hBKV8sUAisMfcYWpPRnyz+6EFmh35BOBGJJmuhTDBGm5/7seLjOTIA==}
+    dependencies:
+      is-promise: 4.0.0
+    dev: false
 
   /svelte-hmr@0.15.2(svelte@4.0.1):
     resolution: {integrity: sha512-q/bAruCvFLwvNbeE1x3n37TYFb3mTBJ6TrCq6p2CoFbSTNhDE9oAtEfpy+wmc9So8AG0Tja+X0/mJzX9tSfvIg==}

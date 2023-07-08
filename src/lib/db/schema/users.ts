@@ -1,4 +1,4 @@
-import { timestamp, varchar, integer, pgTable, serial } from 'drizzle-orm/pg-core';
+import { timestamp, varchar, integer, pgTable, serial, boolean } from 'drizzle-orm/pg-core';
 import { sql, type InferModel } from 'drizzle-orm';
 
 export const users = pgTable('users', {
@@ -12,6 +12,7 @@ export const users = pgTable('users', {
 		.default(sql`now()`),
 	lastLoggedIn: timestamp('last_logged_in')
 		.notNull()
-		.default(sql`now()`)
+		.default(sql`now()`),
+	isAdmin: boolean('isAdmin').default(false)
 });
 export type User = InferModel<typeof users>;
