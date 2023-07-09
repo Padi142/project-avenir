@@ -22,6 +22,13 @@
 			"when": 1688740766662,
 			"tag": "0002_previous_demogoblin",
 			"breakpoints": true
+		},
+		{
+			"idx": 3,
+			"version": "5",
+			"when": 1688830330651,
+			"tag": "0003_strong_cerise",
+			"breakpoints": true
 		}
 	]
 }

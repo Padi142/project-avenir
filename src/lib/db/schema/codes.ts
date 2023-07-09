@@ -5,7 +5,9 @@ export const codes = pgTable('codes', {
 	id: serial('id').primaryKey(),
 	name: varchar('name').notNull(),
 	hash: varchar('hash').notNull(),
+	location: varchar('location').notNull().default(''),
 	points: integer('points').notNull().default(1),
+	createdBy: varchar('createdBy').notNull().default(''),
 	createdAt: timestamp('created_at')
 		.notNull()
 		.default(sql`now()`),

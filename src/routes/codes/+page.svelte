@@ -1,8 +1,36 @@
-<div class="flex flex-col gap-4 justify-center items-center">
-	<img
-		class="h-1/2 w-1/4"
-		src="https://paulcrickard.files.wordpress.com/2012/02/img001_2448x3264.jpg"
-		alt="Somar"
-	/>
-	<p class="text-xl py-1">Don't be afraid, try it</p>
+<div class="w-full flex flex-col justify-center items-center">
+	<div class="hero min-h-full w-1/3">
+		<div class="hero-content flex-col desktop:flex-row">
+			<img
+			class="max-w-sm rounded-lg shadow-2xl max-h-sm"
+				src="https://media.discordapp.net/attachments/1067446074945577031/1127270061892186184/image.png"
+				alt="Somar"
+			/>
+			<div>
+				<h1 class="text-5xl font-bold">L'histoire loue les braves</h1>
+				<p class="pt-6">
+					QR codes are such a wonderfull thing, often hijacked by nonsensical links and ads for
+					kratom or cbd
+				</p>
+				<p class="">
+					We decided to create this platform so you can finally find purpuse in scanning qr codes
+					you find We decided to create this platform so you can finally find purpuse in scanning qr
+					codes you find
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="hero-content flex-col desktop:flex-row-reverse w-1/3">
+		<img
+		class="max-w-sm max-h-sm"
+		src="https://media.discordapp.net/attachments/1067446074945577031/1127336646300409937/av_logo_small.png"
+			alt="Somar 2"
+		/>
+		<div>
+			<h1 class="text-5xl font-bold"></h1>
+			<p class="py-6">
+				Look for codes with this symbol. These will help you level up and unlock more stuff to do
+			</p>
+		</div>
+	</div>
 </div>

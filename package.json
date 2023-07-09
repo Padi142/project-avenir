@@ -46,6 +46,7 @@
 		"html5-qrcode": "^2.3.8",
 		"mysql2": "^3.4.3",
 		"postgres": "^3.3.5",
+		"sass": "^1.63.6",
 		"svelte-forms": "^2.3.1"
 	}
 }

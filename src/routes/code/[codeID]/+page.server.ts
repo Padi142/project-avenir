@@ -1,10 +1,9 @@
 import { drizzle_db } from '$lib/db/connection.server';
 import { eq } from 'drizzle-orm';
-import { users, type User } from '$lib/db/schema/users';
+import { users } from '$lib/db/schema/users';
 
-import type { Actions, PageServerLoad } from './$types';
+import type { PageServerLoad } from './$types';
 import { codes, type Code } from '$lib/db/schema/codes';
-import { goto } from '$app/navigation';
 import UserIDStore from '../../../stores/user_store';
 
 import { redirect } from '@sveltejs/kit';
@@ -31,14 +30,13 @@ const fetchCode = async (codeID: string): Promise<Code | null> => {
 export const actions = {
 	login: async ({ params, request }) => {
 		const data = await request.formData();
-		const loginValue = data.get('loginValue')?.toString();
+		let loginValue = data.get('loginValue')?.toString().trim();
 		const code = await findCode(params.codeID);
 
 		if (!loginValue || loginValue.trim() === '') {
 			showSnackbar('Username not valid', 5000);
 			return;
 		}
-
 		if (loginValue.length === 64) {
 			const user = await findUserByHash(loginValue);
 
