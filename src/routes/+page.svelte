@@ -16,10 +16,8 @@
 <div class=" hero flex flex-col gap-4 justify-center items-center min-w-full min-h-max">
 		<div class="hero-content text-center my-6">
 		  <div class="max-w-md">
-			<div class="glitch">
-				<h1 class="text-5xl font-bold">Looking for answers ?</h1>
-			</div>
-			<p class="text-3xl pt-6 pb-4">This might be all you're ever seeking</p>
+				<h1 class="glitch text-5xl font-bold">Looking for answers ?</h1>
+			<p class="text-3xl pt-6 pb-4">This might be all you'll ever seek</p>
 			<p class="text-2xl py-1">Well don't mess around and get out...</p>
 			{#if showDiv}
 				<p
