@@ -5,8 +5,12 @@
 	import LevelOne from './components/levels/LevelOne.svelte';
 	import Questions from './components/Questions.svelte';
 	import { users } from '$lib/db/schema/users';
+	import SendCodeMessage from './components/SendCodeMessage.svelte';
 
 	export let data: PageData;
+
+	let showModal = false;
+
 	let hashValue = data.user?.hash;
 </script>
 
@@ -17,6 +21,11 @@
 	<LevelOne isNewUser={data.isFirstLogin} user={data.user} />
 
 	<HashBox hashValue={hashValue ?? ''} />
+
+		<!-- Open the modal using ID.showModal() method -->
+		<button class="btn" on:click={() => (showModal = true)}> show modal </button>
+
+		<SendCodeMessage bind:showModal></SendCodeMessage>
 
 	<Questions user={data.user} />
 </div>

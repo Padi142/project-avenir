@@ -1,34 +1,41 @@
 {
-	"version": "5",
-	"dialect": "pg",
-	"entries": [
-		{
-			"idx": 0,
-			"version": "5",
-			"when": 1687120752088,
-			"tag": "0000_tranquil_ghost_rider",
-			"breakpoints": true
-		},
-		{
-			"idx": 1,
-			"version": "5",
-			"when": 1688306371535,
-			"tag": "0001_hesitant_lady_vermin",
-			"breakpoints": true
-		},
-		{
-			"idx": 2,
-			"version": "5",
-			"when": 1688740766662,
-			"tag": "0002_previous_demogoblin",
-			"breakpoints": true
-		},
-		{
-			"idx": 3,
-			"version": "5",
-			"when": 1688830330651,
-			"tag": "0003_strong_cerise",
-			"breakpoints": true
-		}
-	]
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1687120752088,
+      "tag": "0000_tranquil_ghost_rider",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1688306371535,
+      "tag": "0001_hesitant_lady_vermin",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1688740766662,
+      "tag": "0002_previous_demogoblin",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1688830330651,
+      "tag": "0003_strong_cerise",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1688943244674,
+      "tag": "0004_blushing_jubilee",
+      "breakpoints": true
+    }
+  ]
 }
