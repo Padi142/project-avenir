@@ -15,9 +15,14 @@
 </script>
 
 <div
-	class="flex flex-col gap-4 justify-between items-center max-h-max"
+	class="flex flex-col gap-4 justify-between items-center w-full max-h-max"
 	in:fade={{ delay: 1200, duration: 400 }}
 >
+<div class ="flex flex-row w-full justify-between">
+	<div class=""></div>
+	<a href="dashboard/history" class="mx-16">History</a>
+</div>
+
 	<LevelOne isNewUser={data.isFirstLogin} user={data.user} />
 
 	<HashBox hashValue={hashValue ?? ''} />

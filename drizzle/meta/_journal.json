@@ -36,6 +36,13 @@
       "when": 1688943244674,
       "tag": "0004_blushing_jubilee",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1689984196038,
+      "tag": "0005_handy_power_man",
+      "breakpoints": true
     }
   ]
 }
