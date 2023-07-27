@@ -16,21 +16,21 @@
 
 <div
 	class="flex flex-col gap-4 justify-between items-center w-full max-h-max"
-	in:fade={{ delay: 1200, duration: 400 }}
+	in:fade={{ delay: 200, duration: 400 }}
 >
-<div class ="flex flex-row w-full justify-between">
-	<div class=""></div>
-	<a href="dashboard/history" class="mx-16">History</a>
-</div>
+	<div class="flex flex-row justify-between desktop:w-2/3 w-3/4">
+		<div class="" />
+		<a href="dashboard/history" class="">History</a>
+	</div>
 
 	<LevelOne isNewUser={data.isFirstLogin} user={data.user} />
 
 	<HashBox hashValue={hashValue ?? ''} />
 
-		<!-- Open the modal using ID.showModal() method -->
-		<button class="btn" on:click={() => (showModal = true)}> show modal </button>
+	<!-- Open the modal using ID.showModal() method -->
+	<button class="btn" on:click={() => (showModal = true)}> show modal </button>
 
-		<SendCodeMessage bind:showModal></SendCodeMessage>
+	<SendCodeMessage bind:showModal />
 
 	<Questions user={data.user} />
 </div>

@@ -1,8 +1,8 @@
 {
 	"version": "5",
 	"dialect": "pg",
-	"id": "a77c613c-e677-45c1-b98c-6f578a5c23e3",
-	"prevId": "e466660d-53a2-44dc-a192-d84f1957dcb2",
+	"id": "7933738d-d74e-4797-8651-3d163e58f9d4",
+	"prevId": "a77c613c-e677-45c1-b98c-6f578a5c23e3",
 	"tables": {
 		"code_messages": {
 			"name": "code_messages",
@@ -14,14 +14,14 @@
 					"primaryKey": true,
 					"notNull": true
 				},
-				"sender-id": {
-					"name": "sender-id",
+				"sender_id": {
+					"name": "sender_id",
 					"type": "integer",
 					"primaryKey": false,
 					"notNull": true
 				},
-				"reciever_id": {
-					"name": "reciever_id",
+				"receiver_id": {
+					"name": "receiver_id",
 					"type": "integer",
 					"primaryKey": false,
 					"notNull": false
@@ -33,8 +33,8 @@
 					"notNull": true,
 					"default": "now()"
 				},
-				"recieved_on": {
-					"name": "recieved_on",
+				"received_on": {
+					"name": "received_on",
 					"type": "timestamp",
 					"primaryKey": false,
 					"notNull": false
@@ -62,20 +62,20 @@
 			},
 			"indexes": {},
 			"foreignKeys": {
-				"code_messages_sender-id_users_id_fk": {
-					"name": "code_messages_sender-id_users_id_fk",
+				"code_messages_sender_id_users_id_fk": {
+					"name": "code_messages_sender_id_users_id_fk",
 					"tableFrom": "code_messages",
 					"tableTo": "users",
-					"columnsFrom": ["sender-id"],
+					"columnsFrom": ["sender_id"],
 					"columnsTo": ["id"],
 					"onDelete": "no action",
 					"onUpdate": "no action"
 				},
-				"code_messages_reciever_id_users_id_fk": {
-					"name": "code_messages_reciever_id_users_id_fk",
+				"code_messages_receiver_id_users_id_fk": {
+					"name": "code_messages_receiver_id_users_id_fk",
 					"tableFrom": "code_messages",
 					"tableTo": "users",
-					"columnsFrom": ["reciever_id"],
+					"columnsFrom": ["receiver_id"],
 					"columnsTo": ["id"],
 					"onDelete": "no action",
 					"onUpdate": "no action"
@@ -279,6 +279,10 @@
 	"_meta": {
 		"schemas": {},
 		"tables": {},
-		"columns": {}
+		"columns": {
+			"\"code_messages\".\"sender-id\"": "\"code_messages\".\"sender_id\"",
+			"\"code_messages\".\"reciever_id\"": "\"code_messages\".\"receiver_id\"",
+			"\"code_messages\".\"recieved_on\"": "\"code_messages\".\"received_on\""
+		}
 	}
 }

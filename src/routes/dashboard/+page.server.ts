@@ -38,11 +38,9 @@ export const actions = {
 
 		// const code = await findCode(params.codeID);
 
-
 		// await drizzle_db
 		// 	.insert(codes)
 		// 	.values({ name: name, hash: uuid, location: location, points: 1 });
-
 	}
 };
 

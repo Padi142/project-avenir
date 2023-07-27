@@ -43,6 +43,20 @@
       "when": 1689984196038,
       "tag": "0005_handy_power_man",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1690322841108,
+      "tag": "0006_third_red_hulk",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1690488363823,
+      "tag": "0007_lame_spirit",
+      "breakpoints": true
     }
   ]
 }
