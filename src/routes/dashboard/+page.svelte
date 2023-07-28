@@ -27,9 +27,6 @@
 
 	<HashBox hashValue={hashValue ?? ''} />
 
-	<!-- Open the modal using ID.showModal() method -->
-	<button class="btn" on:click={() => (showModal = true)}> show modal </button>
-
 	<SendCodeMessage bind:showModal />
 
 	<Questions user={data.user} />

@@ -56,6 +56,7 @@
 			type="text"
 			placeholder=""
 			name="loginValue"
+			autocomplete="username"
 			class="input input-bordered w-full max-w-lg"
 		/>
 		<button class="btn btn-accent my-6 w-2/5">Let's go</button>
