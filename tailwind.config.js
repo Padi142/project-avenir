@@ -2,7 +2,11 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {},
+		extend: {
+			height: {
+				'ahoj-vyska': '800px'
+			}
+		},
 		fontFamily: {
 			sans: ['"Archivo Narrow"', 'sans-serif']
 		},

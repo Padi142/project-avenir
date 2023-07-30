@@ -16,7 +16,7 @@ export const scans = pgTable('scan_records', {
 		.notNull()
 		.default(sql`now()`),
 	receivedMessage: integer('received_message').references(() => code_messages.id),
-	sentMessage: integer('sent_message').references(() => code_messages.id),
+	sentMessage: integer('sent_message').references(() => code_messages.id)
 });
 
 export type Scan = InferModel<typeof scans>;

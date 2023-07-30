@@ -8,7 +8,7 @@
 
 <div class="flex flex-col justify-center items-center">
 	<p class="desktop:text-3xl text-2xl mt-4">Your login hash:</p>
-	<div class="flex items-center max-w-full">
+	<div class="flex items-center max-w-full my-2">
 		<input
 			bind:value={hashValue}
 			type="text"

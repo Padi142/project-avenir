@@ -15,8 +15,7 @@ export const code_messages = pgTable('code_messages', {
 	receivedOn: timestamp('received_on'),
 	wasViewed: boolean('was_viewed').notNull().default(false),
 	codeId: integer('code_id').references(() => codes.id),
-	message: varchar('message').notNull().default(''),
-
+	message: varchar('message').notNull().default('')
 });
 
 export type CodeMessage = InferModel<typeof code_messages>;

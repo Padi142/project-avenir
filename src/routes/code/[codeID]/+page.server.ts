@@ -1,12 +1,12 @@
 import { drizzle_db } from '$lib/db/connection.server';
 import { eq } from 'drizzle-orm';
-import { users } from '$lib/db/schema/users';
+import { users, type User } from '$lib/db/schema/users';
 
 import type { PageServerLoad } from './$types';
 import { codes, type Code } from '$lib/db/schema/codes';
 import UserIDStore from '../../../stores/user_store';
 
-import { redirect } from '@sveltejs/kit';
+import { redirect, type Cookies } from '@sveltejs/kit';
 import { createHash } from 'crypto';
 import { showSnackbar } from '../../../stores/snackbar_store';
 import { scans } from '$lib/db/schema/scan';
@@ -28,7 +28,7 @@ const fetchCode = async (codeID: string): Promise<Code | null> => {
 };
 
 export const actions = {
-	login: async ({ params, request }) => {
+	login: async ({ cookies, params, request, locals }) => {
 		const data = await request.formData();
 		let loginValue = data.get('loginValue')?.toString().trim();
 		const code = await findCode(params.codeID);
@@ -54,6 +54,8 @@ export const actions = {
 					.set({ level: user.level + 1, score: user.score + code.points })
 					.where(eq(users.id, user.id));
 			}
+			setUserCookie(user, cookies)
+			
 			throw redirect(302, '/dashboard');
 		}
 
@@ -64,6 +66,8 @@ export const actions = {
 		const user = await findUserByHash(loginValue);
 		await drizzle_db.insert(scans).values({ codeId: code.id, userId: user.id });
 		UserIDStore.set(hash);
+		setUserCookie(user, cookies)
+
 		throw redirect(302, '/dashboard?firstLogin=true');
 	}
 };
@@ -92,3 +96,19 @@ const createHashValue = () => {
 	const hash = createHash('sha256').update(Date().toString()).digest('hex').toString();
 	return hash;
 };
+
+const setUserCookie = (user : User, cookies: Cookies) => {
+	cookies.set('session', JSON.stringify(user), {
+		// send cookie for every page
+		path: '/',
+		// server side only cookie so you can't use `document.cookie`
+		httpOnly: true,
+		// only requests from same site can send cookies
+		// https://developer.mozilla.org/en-US/docs/Glossary/CSRF
+		sameSite: 'strict',
+		// only sent over HTTPS in production
+		secure: process.env.NODE_ENV === 'production',
+		// set cookie to expire after a month
+		maxAge: 60 * 60 * 24 * 30 * 1.25,
+	  })
+}

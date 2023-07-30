@@ -6,17 +6,18 @@ import { drizzle_db } from '$lib/db/connection.server';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 import { codes } from '$lib/db/schema/codes';
+import { page } from '$app/stores'
 
-export const load = (async ({ url }) => {
-	const userHash = get(UserIDStore);
-	if (userHash == '') {
+export const load = (async ({ url, locals }) => {
+	const user = locals.user
+	if (user === null) {
 		throw redirect(302, '/');
 	}
 
 	const login = url.searchParams.get('isFirstLogin');
-
+	console.log(user)
 	return {
-		user: fetchUser(userHash),
+		user: user,
 		isFirstLogin: JSON.parse(login ?? 'false')
 	};
 }) satisfies PageServerLoad;

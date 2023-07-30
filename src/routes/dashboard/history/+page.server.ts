@@ -12,7 +12,7 @@ import { alias } from 'drizzle-orm/pg-core';
 
 export const load = (async ({ url }) => {
 	const userHash = get(UserIDStore);
-	if (userHash == '') {
+	if (userHash === '') {
 		throw redirect(302, '/');
 	}
 
@@ -22,16 +22,23 @@ export const load = (async ({ url }) => {
 	}
 
 	return {
-		scans:fetchUserScans(user),
+		scans: fetchUserScans(user)
 	};
 }) satisfies PageServerLoad;
 
 const fetchUserScans = async (
 	user: User
-): Promise<Array<{ code: Code | null; scan_records: Scan | null; sent_message: CodeMessage | null ; received_message: CodeMessage | null }>> => {
-	const received_message = alias(code_messages, "received_message")
-	const sent_message = alias(code_messages, "sent_message")
-	const code = alias(codes, "code")
+): Promise<
+	Array<{
+		code: Code | null;
+		scan_records: Scan | null;
+		sent_message: CodeMessage | null;
+		received_message: CodeMessage | null;
+	}>
+> => {
+	const received_message = alias(code_messages, 'received_message');
+	const sent_message = alias(code_messages, 'sent_message');
+	const code = alias(codes, 'code');
 	const scansResult = await drizzle_db
 		.select()
 		.from(scans)
