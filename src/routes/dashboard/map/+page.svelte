@@ -23,11 +23,15 @@
 				})
 				.addTo(map);
 
-			leaflet
-				.marker([49.202636, 16.628546])
-				.addTo(map)
-				.bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-				.openPopup();
+				data.scan.forEach((scan, index) => {
+
+					leaflet
+						.marker([49.202636 - index * 0.03, 16.628546])
+						.addTo(map)
+						.bindPopup(scan.code?.name ?? "ahoj")
+						.openPopup();
+				console.log(index);
+			});
 		}
 	});
 

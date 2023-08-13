@@ -6,6 +6,11 @@
 	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
+<svelte:head>
+  <title>Avenir</title>
+</svelte:head>
+
+
 <div class="min-w-full max-w-full min-h-full max-h-ful">
 	<nav>
 		<div class="flex justify-between">

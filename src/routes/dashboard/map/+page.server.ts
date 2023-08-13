@@ -1,28 +1,33 @@
 import { users, type User } from '$lib/db/schema/users';
 import { get } from 'svelte/store';
-import UserIDStore from '../../stores/user_store';
 import type { Actions, PageServerLoad } from './$types';
 import { drizzle_db } from '$lib/db/connection.server';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 import { scans, type Scan } from '$lib/db/schema/scan';
+import { alias } from 'drizzle-orm/pg-core';
+import { codes, type Code } from '$lib/db/schema/codes';
 
-export const load = (async ({ url }) => {
-	const userHash = get(UserIDStore);
-	if (userHash === '') {
+
+export const load = (async ({ locals, url }) => {
+	const user = locals.user
+	if (user === null) {
 		throw redirect(302, '/');
 	}
 
-	const user = await fetchUser(userHash);
-
 	return {
-		user: user,
-		scan: 
+		user: locals.user,
+		scan: fetchScans(locals.user.id)
 	};
 }) satisfies PageServerLoad;
 
-const fetchScans = async (userId: number): Promise<Array<Scan>> => {
-	const scansRes = await drizzle_db.select().from(scans).where(eq(scans.userId, userId)).limit(1);
+const fetchScans = async (userId: number): Promise<Array<{
+	code: Code | null;
+	scan_records: Scan | null;
+}>> => {
+	const code = alias(codes, 'code');
+
+	const scansRes = await drizzle_db.select().from(scans).where(eq(scans.userId, userId)).fullJoin(code, eq(code.id, scans.codeId)).limit(1);
 
 	return scansRes;
 };

@@ -54,8 +54,8 @@ export const actions = {
 					.set({ level: user.level + 1, score: user.score + code.points })
 					.where(eq(users.id, user.id));
 			}
-			setUserCookie(user, cookies)
-			
+			setUserCookie(user, cookies);
+
 			throw redirect(302, '/dashboard');
 		}
 
@@ -66,9 +66,15 @@ export const actions = {
 		const user = await findUserByHash(loginValue);
 		await drizzle_db.insert(scans).values({ codeId: code.id, userId: user.id });
 		UserIDStore.set(hash);
-		setUserCookie(user, cookies)
+		setUserCookie(user, cookies);
 
 		throw redirect(302, '/dashboard?firstLogin=true');
+	},
+
+	discordLogin: async ({}) => {
+		export const handle = SvelteKitAuth({
+			providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET })]
+		});
 	}
 };
 
@@ -97,7 +103,7 @@ const createHashValue = () => {
 	return hash;
 };
 
-const setUserCookie = (user : User, cookies: Cookies) => {
+const setUserCookie = (user: User, cookies: Cookies) => {
 	cookies.set('session', JSON.stringify(user), {
 		// send cookie for every page
 		path: '/',
@@ -109,6 +115,6 @@ const setUserCookie = (user : User, cookies: Cookies) => {
 		// only sent over HTTPS in production
 		secure: process.env.NODE_ENV === 'production',
 		// set cookie to expire after a month
-		maxAge: 60 * 60 * 24 * 30 * 1.25,
-	  })
-}
+		maxAge: 60 * 60 * 24 * 30 * 1.25
+	});
+};
