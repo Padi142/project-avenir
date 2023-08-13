@@ -12,7 +12,7 @@
 	}, 15000);
 </script>
 
-<div class=" hero flex flex-col gap-4 justify-center items-center min-w-full min-h-max">
+<div class="flex flex-col gap-4 justify-center items-center min-w-full min-h-max">
 	<div class="hero-content text-center my-6">
 		<div class="max-w-md">
 			<div class="glitchEffect desktop:text-5xl text-3xl font-bold" title="Looking for answers ?">
